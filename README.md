@@ -34,6 +34,8 @@ It is highly recommended to [download FFmpeg](https://ffmpeg.zeranoe.com/builds/
 **Regedit**  
 * Unpack `ytdl.reg` somewhere and open it in a text editor.
 * Change the path to your `YoutubeDLHandler.exe` location. Save the file.
+  * Please note the double use of `\\` in the path.
+  * For example, `@="\"F:\\Software\\YoutubeDLHandler\\YoutubeDLHandler.exe\" \"%1\""`
 * Run `ytdl.reg` once to link the protocol to the application.
 
 ## Usage
