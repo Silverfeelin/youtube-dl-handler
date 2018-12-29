@@ -14,7 +14,7 @@ id = setInterval(function(){
 
     if (div) {
         /* Create button */
-        let txt = document.createTextNode("Download MP3");
+        let txt = document.createTextNode("Download M4A");
         let btn = document.createElement("button");
 
         btn.id = "ytm4a-button";

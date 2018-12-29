@@ -24,6 +24,7 @@ namespace YoutubeDLHandler
                 Setup();
                 return;
             }
+            if (args.Length == 1 && args[0].Contains("%20")) args = args[0].Split(new string[] { "%20" }, StringSplitOptions.None);
 
             // Check youtube-dl
             if (!File.Exists(DEFAULT_YOUTUBE_DL))
