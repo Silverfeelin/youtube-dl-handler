@@ -15,6 +15,13 @@ namespace YoutubeDLHandler
 
         static string Destination => string.IsNullOrWhiteSpace(Properties.Settings.Default.Destination) ? Environment.GetFolderPath(Environment.SpecialFolder.MyVideos) : Properties.Settings.Default.Destination;
 
+        static string[] blacklist = new string[]
+        {
+            "--U", "--update", "--config-location", "--download-archive",
+            "--external-downloader", "-a", "--batch-file", "-o", "--output",
+            "--load-info-json", "--cookies", "--cache-dir", "--ffmpeg-location", "--exec"
+        };
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -23,6 +30,14 @@ namespace YoutubeDLHandler
             {
                 Setup();
                 return;
+            }
+            foreach (var item in blacklist)
+            {
+                if (args.Contains(item))
+                {
+                    WaitAndExit("Please don't use option {0}.", item);
+                    return;
+                }
             }
             if (args.Length == 1 && args[0].Contains("%20")) args = args[0].Split(new string[] { "%20" }, StringSplitOptions.None);
 
